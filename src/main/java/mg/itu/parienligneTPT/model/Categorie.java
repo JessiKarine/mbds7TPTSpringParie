@@ -14,7 +14,7 @@ public class Categorie {
 
     private String nom;
     private String description;
-
+    private String image;
     public Categorie() {
     }
 
@@ -47,12 +47,19 @@ public class Categorie {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     @Override
     public String toString() {
         return "Categorie{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + description + '\'' + ", image='" + image + '\'' +
                 '}';
     }
 }
