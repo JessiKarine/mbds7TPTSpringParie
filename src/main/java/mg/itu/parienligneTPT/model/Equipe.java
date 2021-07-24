@@ -11,6 +11,7 @@ public class Equipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nom;
+    private String image;
 
     public Equipe() {
     }
@@ -35,11 +36,20 @@ public class Equipe {
         this.nom = nom;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Equipe{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
