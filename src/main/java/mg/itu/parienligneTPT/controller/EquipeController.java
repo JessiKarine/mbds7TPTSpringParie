@@ -58,9 +58,28 @@ public class EquipeController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             Equipe equipeselected  = objectMapper.readValue(equipe, Equipe.class);
-            String nomfile = Equipe.uploadImage(file);
-            System.out.println("nom image : "+nomfile);
-            equipeselected.setImage(nomfile);
+            if((equipeselected.getImage()==null && file != null) || equipeselected.getImage().compareToIgnoreCase(file.getOriginalFilename()) !=0 ){
+                String nomfile = Equipe.uploadImage(file);
+                System.out.println("nom image : "+nomfile);
+                equipeselected.setImage(nomfile);
+            }
+            equipeDao.save(equipeselected);
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @PostMapping(value = "/Equipes/Insert")
+    public void insertEquipeBack(@RequestParam("file") MultipartFile file , @RequestParam("equipe") String equipe){
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Equipe equipeselected  = objectMapper.readValue(equipe, Equipe.class);
+            if((equipeselected.getImage()==null && file != null) || equipeselected.getImage().compareToIgnoreCase(file.getOriginalFilename()) !=0 ){
+                String nomfile = Equipe.uploadImage(file);
+                System.out.println("nom image : "+nomfile);
+                equipeselected.setImage(nomfile);
+            }
             equipeDao.save(equipeselected);
 
         }catch(Exception ex){
@@ -71,6 +90,11 @@ public class EquipeController {
     @DeleteMapping(value = "/Equipes")
     public void deleteEquipe(@RequestBody Equipe equipe){
         equipeDao.delete(equipe);
+    }
+
+    @DeleteMapping(value = "/Equipes/Delete/{id}")
+    public void deleteEquipeBack(@PathVariable int id){
+        equipeDao.deleteById(id);
     }
 
 
