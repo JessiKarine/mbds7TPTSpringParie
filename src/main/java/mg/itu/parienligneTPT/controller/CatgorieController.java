@@ -53,4 +53,9 @@ public class CatgorieController {
     public void deleteCategorie(@RequestBody Categorie categorie){
         categorieDao.delete(categorie);
     }
+
+    @DeleteMapping(value = "/Categories/Delete/{id}")
+    public void deleteCategorieById(@PathVariable int id){
+        categorieDao.deleteById(id);
+    }
 }

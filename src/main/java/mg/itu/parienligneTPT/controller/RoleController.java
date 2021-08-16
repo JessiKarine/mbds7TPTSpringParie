@@ -55,4 +55,9 @@ public class RoleController {
     public void deleteRole(@RequestBody Role role){
         roleDao.delete(role);
     }
+
+    @DeleteMapping(value = "/Roles/Delete/{id}")
+    public void deleteRole(@PathVariable int id){
+        roleDao.deleteById(id);
+    }
 }
