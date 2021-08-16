@@ -64,7 +64,7 @@ public class Equipe {
     public static String uploadImage(MultipartFile file)throws Exception{
         Image image=null;
         List<String> extensionImage=new ArrayList<String>();
-        String path="E:/fianarana/tpt/back-tpt-pari/src/assets/images/";
+        String path="E:/fianarana/tpt/mbdsp7tptBackPari/src/assets/images/";
         extensionImage.add("jpg");
         extensionImage.add("jpeg");
         extensionImage.add("png");
